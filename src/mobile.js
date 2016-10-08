@@ -5,7 +5,7 @@ const Description = require('./description');
 
 class Mobile extends Component {
 
-	generateCombo({tab, description}, i) {
+	generateContentGroup({tab, description}, i) {
 
 		return (
 
@@ -21,12 +21,12 @@ class Mobile extends Component {
 	render() {
 
 		const {content} = this.props;
-		const combos = content.map(this.generateCombo);
+		const contentGroups = content.map(this.generateContentGroup);
 
 		return (
 
 			<div>
-				{combos}
+				{contentGroups}
 			</div>
 
 		);

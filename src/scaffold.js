@@ -30,7 +30,6 @@ class Scaffold extends Component {
 		return (
 
 			<div>
-                Scaffold
 				<Content {...this.props} />
 			</div>
 

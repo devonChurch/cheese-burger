@@ -14,7 +14,6 @@ class Desktop extends Component {
 		return (
 
 			<div>
-				DESKTOP
 				<div>{tabs}</div>
 				<div>{descriptions}</div>
 			</div>

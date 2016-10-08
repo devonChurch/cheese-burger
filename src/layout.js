@@ -6,15 +6,31 @@ const
 
 	mobileBreakpoint = 500,
 
-	findMobileReference = () => window.innerWidth < mobileBreakpoint,
-
-	hasTheLayoutChanged = () => currentMobileReference !== findMobileReference(),
-
 	registeredComponents = [],
 
-	registerComponentToUpdate = (Component) => registeredComponents.push(Component),
+	findMobileReference = () => {
 
-	updateRegisteredComponents = () => registeredComponents.map((update) => update()),
+		return window.innerWidth < mobileBreakpoint;
+
+	},
+
+	hasTheLayoutChanged = () => {
+
+		return currentMobileReference !== findMobileReference();
+
+	},
+
+	registerComponentToUpdate = (Component) => {
+
+		registeredComponents.push(Component);
+
+	},
+
+	updateRegisteredComponents = () => {
+
+		registeredComponents.map((update) => update());
+
+	},
 
 	onWindowResize = () => {
 
@@ -27,10 +43,18 @@ const
 
 	},
 
-	listeners = () => window.addEventListener('resize', () => onWindowResize());
+	listeners = () => {
 
-currentMobileReference = findMobileReference();
-listeners();
+		window.addEventListener('resize', () => onWindowResize());
+
+	},
+
+	init = (() => {
+
+		currentMobileReference = findMobileReference();
+		listeners();
+
+	})();
 
 module.exports = {
 
