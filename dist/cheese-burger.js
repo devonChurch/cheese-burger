@@ -8208,12 +8208,6 @@
 	var Scaffold = __webpack_require__(497);
 	var cheeseBurger = document.getElementById('cheese-burger');
 	
-	// find all component DOM nodes on the page
-	// extract their component type and unique ID
-	// initialise the component based on its type
-	// create a reducer with a uniuqe id namespace
-	
-	
 	function renderMe(store) {
 	
 		render(React.createElement(
@@ -8228,16 +8222,15 @@
 		return window.devToolsExtension ? window.devToolsExtension() : undefined;
 	}
 	
-	var store = createStore(reducer, // Reducers.
-	state, // rehydrate.state(), // State.
-	devTools() // Redux development tools.
-	);
+	var store = createStore(reducer, state, devTools());
 	
+	// Render on state change.
 	store.subscribe(function () {
 		return renderMe(store);
-	}); // Render on state change.
+	});
 	
-	renderMe(store); // Prompt initial render on page load.
+	// Prompt initial render on page load.
+	renderMe(store);
 
 /***/ },
 /* 300 */
@@ -31006,21 +30999,27 @@
 	var _require = __webpack_require__(494);
 	
 	var ACTIVATE_TAB = _require.ACTIVATE_TAB;
+	var IS_MOBILE = _require.IS_MOBILE;
 	
 	var defaultState = __webpack_require__(495);
 	
-	module.exports = function () {
+	var reducer = function reducer() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
 		var action = arguments[1];
 	
-	
-		// console.log('inside signups reducer', action);
 	
 		// deepFreeze(state);
 		//
 		// _debug('Questions:', 'action', action);
 	
+		// console.log('REDUCER', action.type, action.data);
+	
 		switch (action.type) {
+	
+			case IS_MOBILE:
+				return _extends({}, state, {
+					isMobile: action.data
+				});
 	
 			case ACTIVATE_TAB:
 				return _extends({}, state, {
@@ -31032,6 +31031,8 @@
 	
 		}
 	};
+	
+	module.exports = reducer;
 
 /***/ },
 /* 494 */
@@ -31040,6 +31041,7 @@
 	'use strict';
 	
 	var actions = {
+	    IS_MOBILE: 'IS_MOBILE',
 	    ACTIVATE_TAB: 'ACTIVATE_TAB'
 	};
 	
@@ -31052,9 +31054,8 @@
 	"use strict";
 	
 	var state = {
-	
+	    isMobile: true,
 	    activeTab: 0
-	
 	};
 	
 	module.exports = state;
@@ -31095,7 +31096,17 @@
 	var React = __webpack_require__(300);
 	var Component = React.Component;
 	
+	var _require = __webpack_require__(484);
+	
+	var connect = _require.connect;
+	
+	var _require2 = __webpack_require__(494);
+	
+	var IS_MOBILE = _require2.IS_MOBILE;
+	
 	var layout = __webpack_require__(498);
+	var Mobile = __webpack_require__(499);
+	var Desktop = __webpack_require__(502);
 	
 	var Scaffold = function (_Component) {
 		_inherits(Scaffold, _Component);
@@ -31110,28 +31121,26 @@
 			key: 'updateIsLayoutMobile',
 			value: function updateIsLayoutMobile() {
 	
-				console.log('Set State to', layout.mobile);
+				this.props.dispatch({
+					type: IS_MOBILE,
+					data: layout.mobile
+				});
 			}
 		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
 	
-				console.log('componentDidMount', this);
-	
-				layout.register(this.updateIsLayoutMobile);
+				layout.register(this.updateIsLayoutMobile.bind(this));
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-	
-				console.log('Scaffold', this);
 	
 				var Content = layout.mobile ? Mobile : Desktop;
 	
 				return React.createElement(
 					'div',
 					null,
-					'Scaffold',
 					React.createElement(Content, this.props)
 				);
 			}
@@ -31140,7 +31149,11 @@
 		return Scaffold;
 	}(Component);
 	
-	module.exports = Scaffold;
+	var mapStateToProps = function mapStateToProps(state) {
+		return state;
+	};
+	
+	module.exports = connect(mapStateToProps)(Scaffold);
 
 /***/ },
 /* 498 */
@@ -31148,21 +31161,25 @@
 
 	'use strict';
 	
-	var currentMobileReference = void 0;
+	var currentMobileReference = true;
 	
 	var mobileBreakpoint = 500,
+	    registeredComponents = [],
 	    findMobileReference = function findMobileReference() {
+	
 		return window.innerWidth < mobileBreakpoint;
 	},
 	    hasTheLayoutChanged = function hasTheLayoutChanged() {
+	
 		return currentMobileReference !== findMobileReference();
 	},
-	    registeredComponents = [],
 	    registerComponentToUpdate = function registerComponentToUpdate(Component) {
-		return registeredComponents.push(Component);
+	
+		registeredComponents.push(Component);
 	},
 	    updateRegisteredComponents = function updateRegisteredComponents() {
-		return registeredComponents.map(function (update) {
+	
+		registeredComponents.map(function (update) {
 			return update();
 		});
 	},
@@ -31175,13 +31192,16 @@
 		}
 	},
 	    listeners = function listeners() {
-		return window.addEventListener('resize', function () {
+	
+		window.addEventListener('resize', function () {
 			return onWindowResize();
 		});
-	};
+	},
+	    init = function () {
 	
-	currentMobileReference = findMobileReference();
-	listeners();
+		currentMobileReference = findMobileReference();
+		listeners();
+	}();
 	
 	module.exports = {
 	
@@ -31192,6 +31212,237 @@
 			registerComponentToUpdate(Component);
 		}
 	};
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(300);
+	var Component = React.Component;
+	
+	var Tab = __webpack_require__(500);
+	var Description = __webpack_require__(501);
+	
+	var Mobile = function (_Component) {
+		_inherits(Mobile, _Component);
+	
+		function Mobile() {
+			_classCallCheck(this, Mobile);
+	
+			return _possibleConstructorReturn(this, (Mobile.__proto__ || Object.getPrototypeOf(Mobile)).apply(this, arguments));
+		}
+	
+		_createClass(Mobile, [{
+			key: 'generateContentGroup',
+			value: function generateContentGroup(_ref, i) {
+				var tab = _ref.tab;
+				var description = _ref.description;
+	
+	
+				return React.createElement(
+					'div',
+					{ key: i },
+					React.createElement(Tab, { tab: tab }),
+					React.createElement(Description, { description: description })
+				);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var content = this.props.content;
+	
+				var contentGroups = content.map(this.generateContentGroup);
+	
+				return React.createElement(
+					'div',
+					null,
+					contentGroups
+				);
+			}
+		}]);
+	
+		return Mobile;
+	}(Component);
+	
+	module.exports = Mobile;
+
+/***/ },
+/* 500 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(300);
+	var Component = React.Component;
+	
+	var Tab = function (_Component) {
+		_inherits(Tab, _Component);
+	
+		function Tab() {
+			_classCallCheck(this, Tab);
+	
+			return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
+		}
+	
+		_createClass(Tab, [{
+			key: 'reveal',
+			value: function reveal() {
+				var button = this.refs.button;
+	
+	
+				console.log('reveal --> mobile?', button);
+				console.dir(button);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var tab = this.props.tab;
+	
+	
+				return React.createElement(
+					'button',
+					{ onClick: this.reveal.bind(this), ref: 'button' },
+					tab
+				);
+			}
+		}]);
+	
+		return Tab;
+	}(Component);
+	
+	module.exports = Tab;
+
+/***/ },
+/* 501 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(300);
+	var Component = React.Component;
+	
+	var Description = function (_Component) {
+		_inherits(Description, _Component);
+	
+		function Description() {
+			_classCallCheck(this, Description);
+	
+			return _possibleConstructorReturn(this, (Description.__proto__ || Object.getPrototypeOf(Description)).apply(this, arguments));
+		}
+	
+		_createClass(Description, [{
+			key: 'render',
+			value: function render() {
+				var description = this.props.description;
+	
+	
+				return React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'p',
+						null,
+						description
+					)
+				);
+			}
+		}]);
+	
+		return Description;
+	}(Component);
+	
+	module.exports = Description;
+
+/***/ },
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(300);
+	var Component = React.Component;
+	
+	var Tab = __webpack_require__(500);
+	var Description = __webpack_require__(501);
+	
+	var Desktop = function (_Component) {
+		_inherits(Desktop, _Component);
+	
+		function Desktop() {
+			_classCallCheck(this, Desktop);
+	
+			return _possibleConstructorReturn(this, (Desktop.__proto__ || Object.getPrototypeOf(Desktop)).apply(this, arguments));
+		}
+	
+		_createClass(Desktop, [{
+			key: 'render',
+			value: function render() {
+				var content = this.props.content;
+	
+				var tabs = content.map(function (_ref, i) {
+					var tab = _ref.tab;
+					return React.createElement(Tab, { tab: tab, key: i });
+				});
+				var descriptions = content.map(function (_ref2, i) {
+					var description = _ref2.description;
+					return React.createElement(Description, { description: description, key: i });
+				});
+	
+				return React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'div',
+						null,
+						tabs
+					),
+					React.createElement(
+						'div',
+						null,
+						descriptions
+					)
+				);
+			}
+		}]);
+	
+		return Desktop;
+	}(Component);
+	
+	module.exports = Desktop;
 
 /***/ }
 /******/ ]);

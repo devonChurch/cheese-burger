@@ -11,6 +11,11 @@ module.exports = {
         path: `${__dirname}/dist`,
         filename: 'cheese-burger.js'
     },
+    externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+    },
     module: {
         preLoaders: [
             {test: /\.js$/, loaders: ['eslint'], include: `${__dirname}/src`}

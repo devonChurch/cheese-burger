@@ -18,7 +18,10 @@ class Tab extends Component {
 
 		return (
 
-			<button onClick={this.reveal.bind(this)} ref="button">{tab}</button>
+			<button onClick={this.reveal.bind(this)} ref="button">
+                <div>ICON</div>
+                {tab}
+            </button>
 
 		);
 
