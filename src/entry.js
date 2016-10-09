@@ -1,1 +1,1 @@
-require('./initialise');
+import './initialise';

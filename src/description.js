@@ -1,5 +1,4 @@
-const React = require('react');
-const {Component} = React;
+import React, {Component} from 'react';
 
 class Description extends Component {
 
@@ -19,4 +18,4 @@ class Description extends Component {
 
 }
 
-module.exports = Description;
+export default Description;

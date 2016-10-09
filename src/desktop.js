@@ -1,7 +1,6 @@
-const React = require('react');
-const {Component} = React;
-const Tab = require('./tab');
-const Description = require('./description');
+import React, {Component} from 'react';
+import Tab from './tab';
+import Description from './description';
 
 class Desktop extends Component {
 
@@ -24,4 +23,4 @@ class Desktop extends Component {
 
 }
 
-module.exports = Desktop;
+export default Desktop;

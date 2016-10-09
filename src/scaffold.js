@@ -1,10 +1,9 @@
-const React = require('react');
-const {Component} = React;
-const {connect} = require('react-redux');
-const {IS_MOBILE} = require('./actions');
-const layout = require('./layout');
-const Mobile = require('./mobile');
-const Desktop = require('./desktop');
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {IS_MOBILE} from './actions';
+import layout from './layout';
+import Mobile from './mobile';
+import Desktop from './desktop';
 
 class Scaffold extends Component {
 
@@ -41,4 +40,4 @@ class Scaffold extends Component {
 
 const mapStateToProps = (state) => state;
 
-module.exports = connect(mapStateToProps)(Scaffold);
+export default connect(mapStateToProps)(Scaffold);

@@ -3,4 +3,4 @@ const state = {
     activeTab: 0
 };
 
-module.exports = state;
+export default state;

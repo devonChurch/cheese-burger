@@ -56,7 +56,7 @@ const
 
 	})();
 
-module.exports = {
+export default {
 
 	get mobile() { return currentMobileReference; },
 	register(Component) { registerComponentToUpdate(Component); }

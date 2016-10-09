@@ -1,5 +1,4 @@
-const React = require('react');
-const {Component} = React;
+import React, {Component} from 'react';
 import Icon from './icon';
 
 class Tab extends Component {
@@ -30,4 +29,4 @@ class Tab extends Component {
 
 }
 
-module.exports = Tab;
+export default Tab;

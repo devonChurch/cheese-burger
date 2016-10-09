@@ -1,6 +1,4 @@
-const actions = {
-    IS_MOBILE: 'IS_MOBILE',
-    ACTIVATE_TAB: 'ACTIVATE_TAB'
-};
+const IS_MOBILE = 'IS_MOBILE';
+const ACTIVATE_TAB = 'ACTIVATE_TAB';
 
-module.exports = actions;
+export {IS_MOBILE, ACTIVATE_TAB};

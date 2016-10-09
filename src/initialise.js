@@ -1,12 +1,11 @@
-const React = require('react');
-const {Component} = React;
-const {render} = require('react-dom');
-const {createStore} = require('redux');
-const {Provider} = require('react-redux');
-const reducer = require('./reducer');
-const state = require('./state');
-const props = require('./props');
-const Scaffold = require('./scaffold');
+import React, {Component} from 'react';
+import {render} from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducer';
+import state from './state';
+import props from './props';
+import Scaffold from './scaffold';
 const cheeseBurger = document.getElementById('cheese-burger');
 
 function renderMe(store) {

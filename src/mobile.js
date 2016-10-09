@@ -1,7 +1,6 @@
-const React = require('react');
-const {Component} = React;
-const Tab = require('./tab');
-const Description = require('./description');
+import React, {Component} from 'react';
+import Tab from './tab';
+import Description from './description';
 
 class Mobile extends Component {
 
@@ -35,4 +34,4 @@ class Mobile extends Component {
 
 }
 
-module.exports = Mobile;
+export default Mobile;

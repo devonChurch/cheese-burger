@@ -1,5 +1,5 @@
-const {ACTIVATE_TAB, IS_MOBILE} = require('./actions');
-const defaultState = require('./state');
+import {ACTIVATE_TAB, IS_MOBILE} from './actions';
+import * as defaultState from './state';
 
 const reducer = (state = defaultState, action) => {
 
@@ -30,4 +30,4 @@ const reducer = (state = defaultState, action) => {
 
 };
 
-module.exports = reducer;
+export default reducer;

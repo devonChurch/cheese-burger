@@ -1,14 +1,9 @@
-// const React = require('react');
-// const {Component} = React;
-
 import React, {Component} from 'react';
-import svg from './svg';
+import * as svg from './svg';
 
 class Icon extends Component {
 
 	render() {
-
-		console.log('ICON this.props', this.props);
 
 		const {icon} = this.props;
 
@@ -24,5 +19,4 @@ class Icon extends Component {
 
 }
 
-// module.exports = Icon;
 export default Icon;
