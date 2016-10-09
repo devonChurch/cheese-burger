@@ -1,5 +1,6 @@
 const React = require('react');
 const {Component} = React;
+import Icon from './icon';
 
 class Tab extends Component {
 
@@ -14,13 +15,13 @@ class Tab extends Component {
 
 	render() {
 
-		const {tab} = this.props;
+		const {icon, text} = this.props.tab;
 
 		return (
 
 			<button onClick={this.reveal.bind(this)} ref="button">
-                <div>ICON</div>
-                {tab}
+                <Icon icon={icon}/>
+                {text}
             </button>
 
 		);

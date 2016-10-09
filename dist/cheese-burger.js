@@ -31320,6 +31320,11 @@
 				return React.createElement(
 					'button',
 					{ onClick: this.reveal.bind(this), ref: 'button' },
+					React.createElement(
+						'div',
+						null,
+						'ICON'
+					),
 					tab
 				);
 			}

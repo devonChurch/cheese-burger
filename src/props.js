@@ -1,14 +1,23 @@
 const props = [
 	{
-		tab: 'Tab one',
+		tab: {
+            icon: 'bubble',
+            text: 'Tab one'
+        },
 		description: 'Content one'
 	},
 	{
-		tab: 'Tab two',
+		tab: {
+            icon: 'cart',
+            text: 'Tab two'
+        },
 		description: 'Content two'
 	},
 	{
-		tab: 'Tab three',
+		tab: {
+            icon: 'home',
+            text: 'Tab three'
+        },
 		description: 'Content three'
 	}
 ];
