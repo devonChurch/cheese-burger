@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import * as svg from './svg';
+import style from './style';
+import * as svg from '../svg';
 
 class Icon extends Component {
 
 	render() {
 
 		const {icon} = this.props;
+		const s = style();
 
 		return (
 
-			<svg viewBox="0 0 18 18">
+			<svg style={s.base} viewBox="0 0 18 18">
 				{svg[icon]()}
             </svg>
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Tab from './tab';
+import Tab from './tab/react';
 import Description from './description';
 
 class Mobile extends Component {

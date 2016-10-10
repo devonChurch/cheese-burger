@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import Icon from './icon';
+import Radium from 'radium';
+import styles from './style';
+import Icon from '../icon/react';
 
+@Radium
 class Tab extends Component {
 
 	reveal() {
@@ -15,10 +18,11 @@ class Tab extends Component {
 	render() {
 
 		const {icon, text} = this.props.tab;
+		const s = styles();
 
 		return (
 
-			<button onClick={this.reveal.bind(this)} ref="button">
+			<button style={s.base} onClick={this.reveal.bind(this)} ref="button">
                 <Icon icon={icon}/>
                 {text}
             </button>
