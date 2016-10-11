@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {IS_MOBILE} from './actions';
-import layout from './layout';
+import {IS_MOBILE} from '../actions';
+import layout from '../layout';
 import Mobile from './mobile';
 import Desktop from './desktop';
 

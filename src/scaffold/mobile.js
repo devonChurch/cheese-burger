@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import Tab from './tab/react';
-import Description from './description';
+import Radium from 'radium';
+import Tab from '../tab/view';
+import Description from '../description/view';
 
+@Radium
 class Mobile extends Component {
 
-	generateContentGroup({tab, description}, i) {
+	generateContentGroup({color, tab, description}, i) {
 
 		return (
 
 			<div key={i}>
-				<Tab tab={tab}/>
-				<Description description={description}/>
+				<Tab color={color} tab={tab}/>
+				<Description color={color} description={description}/>
 			</div>
 
 		);

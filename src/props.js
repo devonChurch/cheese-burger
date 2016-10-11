@@ -1,5 +1,6 @@
 const props = [
 	{
+		color: 'red',
 		tab: {
             icon: 'bubble',
             text: 'Tab one'
@@ -7,6 +8,7 @@ const props = [
 		description: 'Content one'
 	},
 	{
+		color: 'orange',
 		tab: {
             icon: 'cart',
             text: 'Tab two'
@@ -14,6 +16,7 @@ const props = [
 		description: 'Content two'
 	},
 	{
+		color: 'hotpink',
 		tab: {
             icon: 'home',
             text: 'Tab three'

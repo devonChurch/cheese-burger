@@ -7,7 +7,11 @@ class Icon extends Component {
 	render() {
 
 		const {icon} = this.props;
-		const s = style();
+		const iconSize = '1.5rem';
+		const s = style({
+			height: iconSize,
+			width: iconSize
+		});
 
 		return (
 

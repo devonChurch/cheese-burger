@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Radium from 'radium';
 import styles from './style';
-import Icon from '../icon/react';
+import Icon from '../icon/view';
 
 @Radium
 class Tab extends Component {
@@ -17,8 +17,10 @@ class Tab extends Component {
 
 	render() {
 
-		const {icon, text} = this.props.tab;
-		const s = styles();
+		console.log('tab props', this.props);
+
+		const {color, tab: {icon, text}} = this.props;
+		const s = styles({color});
 
 		return (
 

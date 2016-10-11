@@ -1,16 +1,16 @@
+import * as breakpoint from './util/breakpoint';
+
 let
 
 	currentMobileReference = true;
 
 const
 
-	mobileBreakpoint = 500,
-
 	registeredComponents = [],
 
 	findMobileReference = () => {
 
-		return window.innerWidth < mobileBreakpoint;
+		return window.innerWidth < breakpoint.desktop;
 
 	},
 

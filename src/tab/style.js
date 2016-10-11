@@ -1,10 +1,13 @@
-function styles() {
+function styles({color = 'white'} = {}) {
 
 	return {
 
 		base: {
-			background: 'none',
+			background: color, // 'none',
 			border: 0,
+			display: 'flex',
+			padding: '1rem 0.5rem',
+			textAlign: 'left',
 			width: '100%'
 		},
 
