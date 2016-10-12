@@ -7,14 +7,27 @@ import style from './style';
 @Radium
 class Desktop extends Component {
 
+	constructor(props) {
+
+		super(props);
+		this.generateTab = this.generateTab.bind(this);
+
+	}
+
+	generateTab({color, tab}, i) {
+
+		const activateTab = () => this.props.activateTab(i);
+
+		return <Tab color={color} tab={tab} key={i} activateTab={activateTab}/>;
+
+	}
+
 	render() {
 
 		const {content} = this.props;
-		const tabs = content.map(({color, tab}, i) => <Tab color={color} tab={tab} key={i}/>);
-		const descriptions = content.map(({description, color}, i) => <Description color={color} description={description} key={i}/>);
+		const tabs = content.map(this.generateTab);
+		const descriptions = content.map(({description, color}, i) => <Description color={color} description={description} index={i} key={i}/>);
 		const s = style().desktop;
-
-		console.log('desktop s', s);
 
 		return (
 

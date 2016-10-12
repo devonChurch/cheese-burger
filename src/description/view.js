@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Radium from 'radium';
 import style from './style';
 
@@ -7,16 +8,16 @@ class Description extends Component {
 
 	render() {
 
-		const {color, description} = this.props;
+		const {color, description, index} = this.props;
 		const s = style({color});
-
-		// console.log('color, description', color, description);
-		console.log('description s', s);
+		const active = this.props.activeTab === index;
 
 		return (
 
 			<div style={s.base}>
-				<p>{description}</p>
+				<div>
+					<p>{description}</p>
+				</div>
 			</div>
 
 		);
@@ -25,4 +26,6 @@ class Description extends Component {
 
 }
 
-export default Description;
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps)(Description);

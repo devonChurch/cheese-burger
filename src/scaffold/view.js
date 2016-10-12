@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {IS_MOBILE} from '../actions';
+import {IS_MOBILE, ACTIVATE_TAB} from '../actions';
 import layout from '../layout';
 import Mobile from './mobile';
 import Desktop from './desktop';
 
 class Scaffold extends Component {
+
+	constructor(props) {
+
+		super(props);
+		this.activateTabOnClick = this.activateTabOnClick.bind(this);
+
+	}
 
 	updateIsLayoutMobile() {
 
@@ -22,6 +29,15 @@ class Scaffold extends Component {
 
 	}
 
+	activateTabOnClick(key) {
+
+		this.props.dispatch({
+			type: ACTIVATE_TAB,
+			data: key
+		});
+
+	}
+
 	render() {
 
         const Content = layout.mobile ? Mobile : Desktop;
@@ -29,7 +45,7 @@ class Scaffold extends Component {
 		return (
 
 			<div>
-				<Content {...this.props} />
+				<Content {...this.props} activateTab={this.activateTabOnClick}/>
 			</div>
 
 		);

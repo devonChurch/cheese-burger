@@ -1,4 +1,4 @@
-import {desktopAndUp} from '../util/breakpoint';
+import {desktopAndUp, underDesktop} from '../util/breakpoint';
 
 function styles({
 	color = 'black'
@@ -9,6 +9,11 @@ function styles({
 		base: {
 			background: 'white',
 			border: `1px solid ${color}`,
+
+			[underDesktop]: {
+				height: 0,
+				overflow: 'hidden',
+			},
 
 			[desktopAndUp]: {
 				height: '100%',
