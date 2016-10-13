@@ -6,17 +6,27 @@ import style from './style';
 @Radium
 class Description extends Component {
 
+	calculateContentHeight() {
+
+		const {content} = this.refs;
+		const height = content ? content.offsetHeight : false;
+
+		return height;
+
+	}
+
 	render() {
 
 		const {color, description, index} = this.props;
-		const s = style({color});
 		const active = this.props.activeTab === index;
+		const contentHeight = this.calculateContentHeight();
+		const s = style({active, contentHeight, color});
 
 		return (
 
 			<div style={s.base}>
-				<div>
-					<p>{description}</p>
+				<div style={s.content} ref="content">
+					<p style={s.description}>{description}</p>
 				</div>
 			</div>
 
