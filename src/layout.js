@@ -1,5 +1,46 @@
 import * as breakpoint from './util/breakpoint';
 
+const throttle = (() => {
+
+	let
+
+		currentFrames = 0,
+		deferredInstance,
+		animationInstance;
+
+	const
+
+		maxFrames = 60,
+
+		stopThrottling = () => {
+
+			currentFrames = 0;
+			cancelAnimationFrame(animationInstance);
+			deferredInstance();
+
+		},
+
+		startThrottling = () => {
+
+			const continueThrottling = currentFrames < maxFrames;
+			const callback = continueThrottling ? startThrottling : stopThrottling;
+
+			currentFrames += 1;
+			animationInstance = requestAnimationFrame(callback);
+
+		},
+
+		addinstance = (instance) => {
+
+			deferredInstance = instance;
+			startThrottling();
+
+		};
+
+	return addinstance;
+
+})();
+
 let
 
 	currentMobileReference = true;
@@ -45,7 +86,7 @@ const
 
 	listeners = () => {
 
-		window.addEventListener('resize', () => onWindowResize());
+		window.addEventListener('resize', () => throttle(onWindowResize));
 
 	},
 
