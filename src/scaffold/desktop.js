@@ -26,7 +26,7 @@ class Desktop extends Component {
 
 		const {content} = this.props;
 		const tabs = content.map(this.generateTab);
-		const descriptions = content.map(({description, color}, i) => <Description color={color} description={description} index={i} key={i}/>);
+		const descriptions = content.map(({heading, description, callToAction, color}, i) => <Description color={color} content={{heading, description, callToAction}} index={i} key={i}/>);
 		const s = style().desktop;
 
 		return (

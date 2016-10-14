@@ -1,5 +1,5 @@
 import {keyframes} from 'radium';
-import {desktopAndUp, underDesktop, isMobile} from '../util/breakpoint';
+import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
 
 function styles({
 	show = false,
@@ -8,28 +8,20 @@ function styles({
 	color = 'black'
 } = {}) {
 
-	const contentAnimation = (() => {
+	const mobileAnimation = () => {
 
 		const
 
-			showKeyframes = isMobile() ?
-				{
-					'0%': {height: 0},
-					'99%': {height: contentHeight},
-					'100%': {height: 'auto'},
-				} : {
-					'0%': {opacity: 0},
-					'100%': {opacity: 100},
-				},
+			showKeyframes = {
+				'0%': {height: 0},
+				'99%': {height: contentHeight},
+				'100%': {height: 'auto'},
+			},
 
-			hideKeyframes = isMobile() ?
-				{
-					'0%': {height: contentHeight || 0},
-					'100%': {height: 0},
-				} : {
-					'0%': {opacity: 100},
-					'100%': {opacity: 0},
-				},
+			hideKeyframes = {
+				'0%': {height: contentHeight || 0},
+				'100%': {height: 0},
+			},
 
 			animationName = () => {
 
@@ -40,43 +32,76 @@ function styles({
 
 			},
 
-			transitionSpeed = () => {
+			animationParameters = () => 'xxx 200ms ease forwards';
 
-				return isMobile() ? '0.2s' : '0.5s';
+		return {animationName, animationParameters};
+
+	};
+
+	const desktopAnimation = () => {
+
+		const
+
+			showKeyframes = {
+				'0%': {height: 0, opacity: 0, zIndex: 1},
+				'50%': {height: 0, opacity: 0, zIndex: 1},
+				'51%': {height: 'auto', opacity: 0, zIndex: 2},
+				'100%': {height: 'auto', opacity: 1, zIndex: 2},
+			},
+
+			hideKeyframes = {
+				'0%': {height: 'auto', opacity: 1, zIndex: 2},
+				'50%': {height: 'auto', opacity: 0, zIndex: 2},
+				'51%': {height: 0, opacity: 0, zIndex: 1},
+				'100%': {height: 0, opacity: 0, zIndex: 1},
+			},
+
+			animationName = () => {
+
+				if (show) return keyframes(showKeyframes);
+				else if (hide) return keyframes(hideKeyframes);
+
+				return 'none';
 
 			},
 
-			contentIndex = () => {
+			animationParameters = () => 'xxx 500ms linear forwards';
 
-				if (show) return 2;
-				else if (hide) return 1;
+		return {animationName, animationParameters};
 
-				return 0;
+	};
 
-			};
-
-		return {animationName, transitionSpeed, contentIndex};
-
-	})();
+	const contentAnimation = isMobile() ? mobileAnimation() : desktopAnimation();
 
 	const base = {
-		animation: `xxx ${contentAnimation.transitionSpeed()} ease forwards`,
+		animation: contentAnimation.animationParameters(),
 		animationName: contentAnimation.animationName(),
 		background: 'white',
 		border: `1px solid ${color}`,
+		height: 0,
+		overflow: 'hidden',
 
-		[underDesktop]: {
-			height: 0,
-			overflow: 'hidden',
-		},
+		// [underDesktop]: {
+			// height: 0,
+			// overflow: 'hidden',
+		// },
 
-		[desktopAndUp]: {
-			height: '100%',
-			left: 0,
-			position: 'absolute',
-			width: '100%',
-			zIndex: contentAnimation.contentIndex(),
-		}
+		// [desktopAndUp]: {
+		// 	height: '100%',
+		// 	left: 0,
+		// 	position: 'absolute',
+		// 	width: '100%',
+		// 	zIndex: contentAnimation.contentIndex(),
+		// }
+
+		// [desktopAndUp]: {
+		// 	// height: 0,
+		// 	// height: '100%',
+		// 	// left: 0,
+		// 	position: 'relative',
+		// 	// width: '100%',
+		// 	// zIndex: isDesktop() ? contentAnimation.contentZIndex() : 0,
+		// }
 
 	};
 

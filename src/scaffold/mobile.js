@@ -13,7 +13,7 @@ class Mobile extends Component {
 
 	}
 
-	generateContentGroup({color, tab, description}, i) {
+	generateContentGroup({color, tab, heading, description, callToAction}, i) {
 
 		const activateTab = () => this.props.activateTab(i);
 
@@ -21,7 +21,7 @@ class Mobile extends Component {
 
 			<div key={i}>
 				<Tab color={color} tab={tab} activateTab={activateTab}/>
-				<Description color={color} description={description} index={i}/>
+				<Description color={color} content={{heading, description, callToAction}} index={i}/>
 			</div>
 
 		);
