@@ -1,4 +1,4 @@
-import {ACTIVATE_TAB, IS_MOBILE} from './actions';
+import {IS_MOBILE, SHOW_TAB, HIDE_TAB} from './actions';
 import * as defaultState from './state';
 
 const reducer = (state = defaultState, action) => {
@@ -17,10 +17,16 @@ const reducer = (state = defaultState, action) => {
 				isMobile: action.data
 			};
 
-        case ACTIVATE_TAB:
+        case SHOW_TAB:
 			return {
 				...state,
-				activeTab: action.data
+				showTab: action.data
+			};
+
+		case HIDE_TAB:
+			return {
+				...state,
+				hideTab: action.data
 			};
 
 		default:

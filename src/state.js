@@ -1,6 +1,6 @@
 const state = {
     isMobile: true,
-    activeTab: 0
+    showTab: 0
 };
 
 export default state;

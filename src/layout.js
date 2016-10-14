@@ -20,10 +20,10 @@ const throttle = (() => {
 
 		},
 
-		startThrottling = () => {
+		activateThrottling = () => {
 
 			const continueThrottling = currentFrames < maxFrames;
-			const callback = continueThrottling ? startThrottling : stopThrottling;
+			const callback = continueThrottling ? activateThrottling : stopThrottling;
 
 			currentFrames += 1;
 			animationInstance = requestAnimationFrame(callback);
@@ -32,8 +32,18 @@ const throttle = (() => {
 
 		addinstance = (instance) => {
 
-			deferredInstance = instance;
-			startThrottling();
+			const isThrottling = currentFrames;
+
+			if (isThrottling) {
+
+				activateThrottling();
+				deferredInstance = instance;
+
+			} else {
+
+				instance();
+
+			}
 
 		};
 

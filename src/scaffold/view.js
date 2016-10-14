@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {IS_MOBILE, ACTIVATE_TAB} from '../actions';
+import {IS_MOBILE, SHOW_TAB, HIDE_TAB} from '../actions';
 import layout from '../layout';
 import Mobile from './mobile';
 import Desktop from './desktop';
@@ -32,7 +32,12 @@ class Scaffold extends Component {
 	activateTabOnClick(key) {
 
 		this.props.dispatch({
-			type: ACTIVATE_TAB,
+			type: HIDE_TAB,
+			data: this.props.showTab
+		});
+
+		this.props.dispatch({
+			type: SHOW_TAB,
 			data: key
 		});
 

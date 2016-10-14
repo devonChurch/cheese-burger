@@ -30998,7 +30998,7 @@
 	
 	var _require = __webpack_require__(494);
 	
-	var ACTIVATE_TAB = _require.ACTIVATE_TAB;
+	var SHOW_TAB = _require.SHOW_TAB;
 	var IS_MOBILE = _require.IS_MOBILE;
 	
 	var defaultState = __webpack_require__(495);
@@ -31021,9 +31021,9 @@
 					isMobile: action.data
 				});
 	
-			case ACTIVATE_TAB:
+			case SHOW_TAB:
 				return _extends({}, state, {
-					activeTab: action.data
+					showTab: action.data
 				});
 	
 			default:
@@ -31042,7 +31042,7 @@
 	
 	var actions = {
 	    IS_MOBILE: 'IS_MOBILE',
-	    ACTIVATE_TAB: 'ACTIVATE_TAB'
+	    SHOW_TAB: 'SHOW_TAB'
 	};
 	
 	module.exports = actions;
@@ -31055,7 +31055,7 @@
 	
 	var state = {
 	    isMobile: true,
-	    activeTab: 0
+	    showTab: 0
 	};
 	
 	module.exports = state;

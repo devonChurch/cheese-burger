@@ -1,4 +1,5 @@
 const IS_MOBILE = 'IS_MOBILE';
-const ACTIVATE_TAB = 'ACTIVATE_TAB';
+const SHOW_TAB = 'SHOW_TAB';
+const HIDE_TAB = 'HIDE_TAB';
 
-export {IS_MOBILE, ACTIVATE_TAB};
+export {IS_MOBILE, SHOW_TAB, HIDE_TAB};
