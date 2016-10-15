@@ -21,8 +21,8 @@ module.exports = {
             {test: /\.js$/, loaders: ['eslint'], include: `${__dirname}/src`}
         ],
         loaders: [
-            {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/},
-            {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'], exclude: /node_modules/}
+            {test: /\.js$/, loaders: ['babel'], include: `${__dirname}/src`},
+            {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'], include: `${__dirname}/src`}
         ]
     },
     plugins: [
