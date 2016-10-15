@@ -2,8 +2,11 @@ import {keyframes} from 'radium';
 import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
 
 function styles({
-	show = false,
-	hide = true,
+	isShowing = false,
+	isHiding = false,
+	isUnderActive = false,
+	isFirstTab = false,
+	isLastTab = false,
 	contentHeight,
 	color = 'black'
 } = {}) {
@@ -31,8 +34,8 @@ function styles({
 
 			animationName = () => {
 
-				if (show) return keyframes(showKeyframes);
-				else if (hide) return keyframes(hideKeyframes);
+				if (isShowing) return keyframes(showKeyframes);
+				else if (isHiding) return keyframes(hideKeyframes);
 
 				return 'none';
 
@@ -68,8 +71,8 @@ function styles({
 
 			animationName = () => {
 
-				if (show) return keyframes(showKeyframes);
-				else if (hide) return keyframes(hideKeyframes);
+				if (isShowing) return keyframes(showKeyframes);
+				else if (isHiding) return keyframes(hideKeyframes);
 
 				return 'none';
 

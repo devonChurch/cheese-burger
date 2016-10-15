@@ -11,6 +11,7 @@ class Scaffold extends Component {
 
 		super(props);
 		this.showTabCallbackOnClick = this.showTabCallbackOnClick.bind(this);
+		this.generateSettings = this.generateSettings.bind(this);
 
 	}
 
@@ -20,6 +21,18 @@ class Scaffold extends Component {
             type: IS_MOBILE,
             data: layout.mobile
         });
+
+	}
+
+	generateSettings(i) {
+
+		const {content, showTab, hideTab} = this.props;
+		const isShowing = showTab === i;
+		const isHiding = hideTab === i;
+		const isFirstTab = i === 0;
+		const isLastTab = i === content.length - 1;
+
+		return {isShowing, isHiding, isFirstTab, isLastTab};
 
 	}
 
@@ -50,7 +63,7 @@ class Scaffold extends Component {
 		return (
 
 			<div>
-				<Content {...this.props} showTabCallback={this.showTabCallbackOnClick}/>
+				<Content {...this.props} showTabCallback={this.showTabCallbackOnClick} generateSettings={this.generateSettings}/>
 			</div>
 
 		);

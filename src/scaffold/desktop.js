@@ -11,18 +11,25 @@ class Desktop extends Component {
 
 		super(props);
 		this.generateTab = this.generateTab.bind(this);
+		this.generateDescription = this.generateDescription.bind(this);
 
 	}
 
 	generateTab({color, tab}, i) {
 
-		const {content, showTabCallback, showTab, hideTab} = this.props;
-		const isShowing = showTab === i;
-		const isHiding = hideTab === i;
-		const isFirstTab = i === 0;
-		const isLastTab = i === content.length - 1;
+		const {showTabCallback, generateSettings} = this.props;
+		const settings = generateSettings(i);
 
-		return <Tab tab={{...tab, color, isShowing, isHiding, isFirstTab, isLastTab, showTabCallback: () => showTabCallback(i)}} key={i}/>;
+		return <Tab tab={{...tab, color, settings, showTabCallback: () => showTabCallback(i)}} key={i}/>;
+
+	}
+
+	generateDescription(description, i) {
+
+		const {generateSettings} = this.props;
+		const settings = generateSettings(i);
+
+		return <Description description={{...description, settings}} key={i}/>;
 
 	}
 
@@ -30,7 +37,7 @@ class Desktop extends Component {
 
 		const {content} = this.props;
 		const tabs = content.map(this.generateTab);
-		const descriptions = content.map(({heading, description, callToAction, color}, i) => <Description color={color} content={{heading, description, callToAction}} index={i} key={i}/>);
+		const descriptions = content.map(this.generateDescription);
 		const s = style();
 
 		return (

@@ -9,9 +9,8 @@ class Tab extends Component {
 
 	render() {
 
-		const {tab} = this.props;
-		const {icon, text, showTabCallback} = tab;
-		const s = styles(tab);
+		const {icon, text, color, settings, showTabCallback} = this.props.tab;
+		const s = styles({...settings, color});
 
 		return (
 

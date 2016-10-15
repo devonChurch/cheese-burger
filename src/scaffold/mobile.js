@@ -16,18 +16,14 @@ class Mobile extends Component {
 
 	generateContentGroup({color, tab, heading, description, callToAction}, i) {
 
-		const {content, showTabCallback, showTab, hideTab} = this.props;
-		const isShowing = showTab === i;
-		const isHiding = hideTab === i;
-		const isUnderActive = showTab + 1 === i;
-		const isFirstTab = i === 0;
-		const isLastTab = i === content.length - 1;
+		const {showTabCallback, generateSettings} = this.props;
+		const settings = generateSettings(i);
 
 		return (
 
 			<div key={i}>
-				<Tab tab={{...tab, color, isShowing, isHiding, isUnderActive, isFirstTab, isLastTab, showTabCallback: () => showTabCallback(i)}}/>
-				<Description color={color} content={{heading, description, callToAction}} index={i}/>
+				<Tab tab={{...tab, color, settings, showTabCallback: () => showTabCallback(i)}}/>
+				<Description description={{color, heading, description, callToAction, settings}}/>
 			</div>
 
 		);

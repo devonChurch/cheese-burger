@@ -27,7 +27,7 @@ function styles({
 
 		[desktopAndUp]: {
 			borderBottom: isShowing ? '1px solid black' : '1px solid transparent',
-			borderLeft: '0',
+			borderLeft: isShowing ? `0.5rem solid ${color}` : '0',
 			borderRight: '0',
 			borderTop: isShowing && !isFirstTab ? '1px solid black' : '1px solid transparent',
 			width: isShowing ? 'calc(100% + 1px)' : '100%',
