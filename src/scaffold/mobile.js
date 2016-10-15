@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Radium from 'radium';
 import Tab from '../tab/view';
 import Description from '../description/view';
+import style from './style';
 
 @Radium
 class Mobile extends Component {
@@ -15,12 +16,17 @@ class Mobile extends Component {
 
 	generateContentGroup({color, tab, heading, description, callToAction}, i) {
 
-		const activateTab = () => this.props.activateTab(i);
+		const {content, showTabCallback, showTab, hideTab} = this.props;
+		const isShowing = showTab === i;
+		const isHiding = hideTab === i;
+		const isUnderActive = showTab + 1 === i;
+		const isFirstTab = i === 0;
+		const isLastTab = i === content.length - 1;
 
 		return (
 
 			<div key={i}>
-				<Tab color={color} tab={tab} activateTab={activateTab}/>
+				<Tab tab={{...tab, color, isShowing, isHiding, isUnderActive, isFirstTab, isLastTab, showTabCallback: () => showTabCallback(i)}}/>
 				<Description color={color} content={{heading, description, callToAction}} index={i}/>
 			</div>
 
@@ -32,10 +38,11 @@ class Mobile extends Component {
 
 		const {content} = this.props;
 		const contentGroups = content.map(this.generateContentGroup);
+		const s = style();
 
 		return (
 
-			<div>
+			<div style={s.base}>
 				{contentGroups}
 			</div>
 

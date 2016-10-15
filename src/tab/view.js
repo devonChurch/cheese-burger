@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Radium from 'radium';
 import styles from './style';
 import Icon from '../icon/view';
@@ -8,12 +9,13 @@ class Tab extends Component {
 
 	render() {
 
-		const {color, tab: {icon, text}, activateTab} = this.props;
-		const s = styles({color});
+		const {tab} = this.props;
+		const {icon, text, showTabCallback} = tab;
+		const s = styles(tab);
 
 		return (
 
-			<button style={s.base} onClick={activateTab} ref="button">
+			<button style={s.base} onClick={showTabCallback} ref="button">
                 <Icon icon={icon}/>
                 {text}
             </button>
@@ -24,4 +26,6 @@ class Tab extends Component {
 
 }
 
-export default Tab;
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps)(Tab);

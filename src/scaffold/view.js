@@ -10,7 +10,7 @@ class Scaffold extends Component {
 	constructor(props) {
 
 		super(props);
-		this.activateTabOnClick = this.activateTabOnClick.bind(this);
+		this.showTabCallbackOnClick = this.showTabCallbackOnClick.bind(this);
 
 	}
 
@@ -29,7 +29,7 @@ class Scaffold extends Component {
 
 	}
 
-	activateTabOnClick(key) {
+	showTabCallbackOnClick(key) {
 
 		this.props.dispatch({
 			type: HIDE_TAB,
@@ -50,7 +50,7 @@ class Scaffold extends Component {
 		return (
 
 			<div>
-				<Content {...this.props} activateTab={this.activateTabOnClick}/>
+				<Content {...this.props} showTabCallback={this.showTabCallbackOnClick}/>
 			</div>
 
 		);

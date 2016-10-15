@@ -16,9 +16,13 @@ class Desktop extends Component {
 
 	generateTab({color, tab}, i) {
 
-		const activateTab = () => this.props.activateTab(i);
+		const {content, showTabCallback, showTab, hideTab} = this.props;
+		const isShowing = showTab === i;
+		const isHiding = hideTab === i;
+		const isFirstTab = i === 0;
+		const isLastTab = i === content.length - 1;
 
-		return <Tab color={color} tab={tab} key={i} activateTab={activateTab}/>;
+		return <Tab tab={{...tab, color, isShowing, isHiding, isFirstTab, isLastTab, showTabCallback: () => showTabCallback(i)}} key={i}/>;
 
 	}
 

@@ -5,6 +5,9 @@ function styles() {
 	const base = {
 		background: 'white',
 		border: '1px solid black',
+		margin: '3rem auto',
+		maxWidth: '90%',
+		width: '57rem',
 
 		[desktopAndUp]: {
 			display: 'flex',
@@ -15,7 +18,8 @@ function styles() {
 
 		[desktopAndUp]: {
 			background: 'gray',
-			width: '10rem',
+			borderRight: '1px solid black',
+			width: '20rem',
 		}
 	};
 
@@ -24,6 +28,7 @@ function styles() {
 		[desktopAndUp]: {
 			flexGrow: 1,
 			position: 'relative',
+			width: '100%',
 		}
 	};
 

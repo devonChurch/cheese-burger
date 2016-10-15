@@ -87,32 +87,8 @@ function styles({
 		animation: contentAnimation.animationParameters(),
 		animationName: contentAnimation.animationName(),
 		background: 'white',
-		// border: `1px solid ${color}`,
 		height: 0,
 		overflow: 'hidden',
-
-		// [underDesktop]: {
-			// height: 0,
-			// overflow: 'hidden',
-		// },
-
-		// [desktopAndUp]: {
-		// 	height: '100%',
-		// 	left: 0,
-		// 	position: 'absolute',
-		// 	width: '100%',
-		// 	zIndex: contentAnimation.contentIndex(),
-		// }
-
-		// [desktopAndUp]: {
-		// 	// height: 0,
-		// 	// height: '100%',
-		// 	// left: 0,
-		// 	position: 'relative',
-		// 	// width: '100%',
-		// 	// zIndex: isDesktop() ? contentAnimation.contentZIndex() : 0,
-		// }
-
 	};
 
 	const content = {

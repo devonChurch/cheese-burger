@@ -17,9 +17,9 @@ class Description extends Component {
 
 	render() {
 
-		const {color, content: {heading, description, callToAction}, index} = this.props;
-		const show = this.props.showTab === index;
-		const hide = this.props.hideTab === index;
+		const {color, content: {heading, description, callToAction}, index, showTab, hideTab} = this.props;
+		const show = showTab === index;
+		const hide = hideTab === index;
 		const contentHeight = this.calculateContentHeight();
 		const s = style({show, hide, contentHeight, color});
 
