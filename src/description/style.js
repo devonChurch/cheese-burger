@@ -8,19 +8,25 @@ function styles({
 	color = 'black'
 } = {}) {
 
+	const isThisComponentViewNew = contentHeight;
+
 	const mobileAnimation = () => {
 
 		const
 
-			showKeyframes = {
+			showKeyframes = isThisComponentViewNew ? {
 				'0%': {height: 0},
 				'99%': {height: contentHeight},
 				'100%': {height: 'auto'},
+			} : {
+				'0%, 100%': {height: 'auto'}
 			},
 
-			hideKeyframes = {
-				'0%': {height: contentHeight || 0},
+			hideKeyframes = isThisComponentViewNew ? {
+				'0%': {height: contentHeight},
 				'100%': {height: 0},
+			} : {
+				'0%, 100%': {height: 0}
 			},
 
 			animationName = () => {
@@ -42,18 +48,22 @@ function styles({
 
 		const
 
-			showKeyframes = {
+			showKeyframes = isThisComponentViewNew ? {
 				'0%': {height: 0, opacity: 0, zIndex: 1},
 				'50%': {height: 0, opacity: 0, zIndex: 1},
 				'51%': {height: 'auto', opacity: 0, zIndex: 2},
 				'100%': {height: 'auto', opacity: 1, zIndex: 2},
+			} : {
+				'0%, 100%': {height: 'auto', opacity: 1, zIndex: 2},
 			},
 
-			hideKeyframes = {
+			hideKeyframes = isThisComponentViewNew ? {
 				'0%': {height: 'auto', opacity: 1, zIndex: 2},
 				'50%': {height: 'auto', opacity: 0, zIndex: 2},
 				'51%': {height: 0, opacity: 0, zIndex: 1},
 				'100%': {height: 0, opacity: 0, zIndex: 1},
+			} : {
+				'0%, 100%': {height: 0, opacity: 0, zIndex: 1},
 			},
 
 			animationName = () => {
