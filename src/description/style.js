@@ -87,7 +87,7 @@ function styles({
 		animation: contentAnimation.animationParameters(),
 		animationName: contentAnimation.animationName(),
 		background: 'white',
-		border: `1px solid ${color}`,
+		// border: `1px solid ${color}`,
 		height: 0,
 		overflow: 'hidden',
 
