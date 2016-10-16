@@ -1,6 +1,6 @@
 const props = [
 	{
-		color: 'red',
+		color: '#2196F3',
 		tab: {
             icon: 'bubble',
             text: 'Lorem ipsum dolor'
@@ -10,7 +10,7 @@ const props = [
 		callToAction: 'Fusce rutrum maximus est et tristique'
 	},
 	{
-		color: 'orange',
+		color: '#009688',
 		tab: {
             icon: 'cart',
             text: 'Sed ut ullamcorper'
@@ -20,7 +20,7 @@ const props = [
 		callToAction: 'Morbi gravida purus non mauris euismod dignissim'
 	},
 	{
-		color: 'hotpink',
+		color: '#673AB7',
 		tab: {
             icon: 'home',
             text: 'Nulla rutrum porta'

@@ -1,5 +1,6 @@
 import {keyframes} from 'radium';
 import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
+import {spacing, fontSize, masterColor} from '../util/style';
 
 function styles({
 	isShowing = false,
@@ -10,6 +11,8 @@ function styles({
 	contentHeight,
 	color = 'black'
 } = {}) {
+
+	const customColor = masterColor.createCustomColor(color);
 
 	const isThisComponentViewNew = contentHeight;
 
@@ -51,22 +54,24 @@ function styles({
 
 		const
 
+			contentOffset = '0.5rem',
+
 			showKeyframes = isThisComponentViewNew ? {
-				'0%': {height: 0, opacity: 0, zIndex: 1},
-				'50%': {height: 0, opacity: 0, zIndex: 1},
-				'51%': {height: 'auto', opacity: 0, zIndex: 2},
-				'100%': {height: 'auto', opacity: 1, zIndex: 2},
+				'0%': {height: 0, opacity: 0, transform: `translateX(-${contentOffset})`, zIndex: 1},
+				'50%': {height: 0, opacity: 0, transform: `translateX(-${contentOffset})`, zIndex: 1},
+				'51%': {height: 'auto', opacity: 0, transform: `translateX(-${contentOffset})`, zIndex: 2},
+				'100%': {height: 'auto', opacity: 1, transform: 'translateX(0)', zIndex: 2},
 			} : {
-				'0%, 100%': {height: 'auto', opacity: 1, zIndex: 2},
+				'0%, 100%': {height: 'auto', opacity: 1, transform: 'translateX(0)', zIndex: 2},
 			},
 
 			hideKeyframes = isThisComponentViewNew ? {
-				'0%': {height: 'auto', opacity: 1, zIndex: 2},
-				'50%': {height: 'auto', opacity: 0, zIndex: 2},
-				'51%': {height: 0, opacity: 0, zIndex: 1},
-				'100%': {height: 0, opacity: 0, zIndex: 1},
+				'0%': {height: 'auto', opacity: 1, transform: 'translateX(0)', zIndex: 2},
+				'50%': {height: 'auto', opacity: 0, transform: `translateX(${contentOffset})`, zIndex: 2},
+				'51%': {height: 0, opacity: 0, transform: `translateX(${contentOffset})`, zIndex: 1},
+				'100%': {height: 0, opacity: 0, transform: `translateX(${contentOffset})`, zIndex: 1},
 			} : {
-				'0%, 100%': {height: 0, opacity: 0, zIndex: 1},
+				'0%, 100%': {height: 0, opacity: 0, transform: 'translateX(0)', zIndex: 1},
 			},
 
 			animationName = () => {
@@ -89,23 +94,33 @@ function styles({
 	const base = {
 		animation: contentAnimation.animationParameters(),
 		animationName: contentAnimation.animationName(),
-		background: 'white',
 		height: 0,
 		overflow: 'hidden',
 	};
 
 	const content = {
-		padding: '1rem',
+		padding: spacing(900),
+	};
+
+	const heading = {
+		color: customColor(500),
 	};
 
 	const description = {
+		color: customColor(900),
 		margin: 0,
+	};
+
+	const callToAction = {
+		color: customColor(300),
 	};
 
 	return {
 		base,
 		content,
-		description
+		heading,
+		description,
+		callToAction
 	};
 
 }

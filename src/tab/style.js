@@ -1,7 +1,9 @@
 import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
+import {spacing, fontFamily, fontSize, fontWeight, masterColor} from '../util/style';
+const {gray} = masterColor;
 
 function styles({
-	color = 'white',
+	color = gray(500),
 	isShowing = false,
 	isHiding = false,
 	isUnderActive = false,
@@ -9,8 +11,11 @@ function styles({
 	isLastTab = false
 } = {}) {
 
+	const customColor = masterColor.createCustomColor(color);
+
 	const base = {
-		background: isShowing ? 'white' : 'gray',
+		alignItems: 'center',
+		background: isShowing ? 'white' : gray(100),
 		display: 'flex',
 		padding: '1rem 0.5rem',
 		textAlign: 'left',
@@ -19,23 +24,34 @@ function styles({
 		width: '100%',
 
 		[underDesktop]: {
-			borderBottom: !isShowing && isLastTab ? '0' : '1px solid black',
+			borderBottom: !isShowing && isLastTab ? '0' : `1px solid ${gray(500)}`,
 			borderLeft: isShowing ? `0.5rem solid ${color}` : '0',
 			borderRight: '0',
-			borderTop: isUnderActive ? '1px solid black' : '0',
+			borderTop: isUnderActive ? `1px solid ${gray(500)}` : '0',
 		},
 
 		[desktopAndUp]: {
-			borderBottom: isShowing ? '1px solid black' : '1px solid transparent',
+			borderBottom: isShowing ? `1px solid ${gray(500)}` : '1px solid transparent',
 			borderLeft: isShowing ? `0.5rem solid ${color}` : '0',
 			borderRight: '0',
-			borderTop: isShowing && !isFirstTab ? '1px solid black' : '1px solid transparent',
+			borderTop: isShowing && !isFirstTab ? `1px solid ${gray(500)}` : '1px solid transparent',
 			width: isShowing ? 'calc(100% + 1px)' : '100%',
 		},
 
 	};
 
-	return {base};
+	const text = {
+		color: isShowing ? customColor(500) : gray(500),
+		fontSize: fontSize(400),
+		fontWeight: fontWeight(700),
+		paddingLeft: spacing(500)
+	};
+
+	const icon = {
+		fill: isShowing ? customColor(500) : gray(500),
+	};
+
+	return {base, text, icon};
 
 }
 

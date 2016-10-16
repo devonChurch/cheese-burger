@@ -25,9 +25,9 @@ class Description extends Component {
 
 			<div style={s.base}>
 				<div style={s.content} ref="content">
-					<h2>{heading}</h2>
+					<h2 style={s.heading}>{heading}</h2>
 					<p style={s.description}>{description}</p>
-					<a>{callToAction}</a>
+					<a style={s.callToAction}>{callToAction}</a>
 				</div>
 			</div>
 

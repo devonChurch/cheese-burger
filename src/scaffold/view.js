@@ -29,10 +29,11 @@ class Scaffold extends Component {
 		const {content, showTab, hideTab} = this.props;
 		const isShowing = showTab === i;
 		const isHiding = hideTab === i;
+		const isUnderActive = showTab + 1 === i;
 		const isFirstTab = i === 0;
 		const isLastTab = i === content.length - 1;
 
-		return {isShowing, isHiding, isFirstTab, isLastTab};
+		return {isShowing, isHiding, isUnderActive, isFirstTab, isLastTab};
 
 	}
 

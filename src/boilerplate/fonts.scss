@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,700');
+
+body {
+    font: {
+        family: 'Roboto', sans-serif;
+        weight: 300;
+    }
+    margin: 0;
+
+    > * {
+        font-size: 0.875rem;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font: {
+        family: 'Roboto Slab', serif;
+        weight: 700;
+    }
+}

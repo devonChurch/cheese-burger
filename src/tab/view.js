@@ -14,9 +14,9 @@ class Tab extends Component {
 
 		return (
 
-			<button style={s.base} onClick={showTabCallback} ref="button">
+			<button className="Button--reset" style={s.base} onClick={showTabCallback} ref="button">
                 <Icon icon={icon}/>
-                {text}
+                <span style={s.text}>{text}</span>
             </button>
 
 		);
