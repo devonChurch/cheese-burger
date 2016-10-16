@@ -1,5 +1,5 @@
 import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
-import {spacing, fontFamily, fontSize, fontWeight, masterColor} from '../util/style';
+import {spacing, speed, fontFamily, fontSize, fontWeight, masterColor} from '../util/style';
 const {gray} = masterColor;
 
 function styles({
@@ -19,7 +19,7 @@ function styles({
 		display: 'flex',
 		padding: '1rem 0.5rem',
 		textAlign: 'left',
-		transitionDuration: '250ms',
+		transitionDuration: `${speed(200)}ms`,
 		transitionProperty: 'background, border',
 		width: '100%',
 
@@ -44,11 +44,10 @@ function styles({
 		color: isShowing ? customColor(500) : gray(500),
 		fontSize: fontSize(400),
 		fontWeight: fontWeight(700),
-		paddingLeft: spacing(500)
 	};
 
 	const icon = {
-		fill: isShowing ? customColor(500) : gray(500),
+		padding: `0 ${spacing(500)} 0 ${spacing(300)}`,
 	};
 
 	return {base, text, icon};

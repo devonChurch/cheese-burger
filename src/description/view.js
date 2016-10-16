@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Radium from 'radium';
 import style from './style';
+import Image from '../image/view';
 
 @Radium
 class Description extends Component {
@@ -17,7 +18,7 @@ class Description extends Component {
 
 	render() {
 
-		const {color, heading, description, callToAction, settings} = this.props.description;
+		const {color, image, heading, description, callToAction, settings} = this.props.description;
 		const contentHeight = this.calculateContentHeight();
 		const s = style({...settings, contentHeight, color});
 
@@ -25,9 +26,12 @@ class Description extends Component {
 
 			<div style={s.base}>
 				<div style={s.content} ref="content">
+					<span style={s.image}>
+						<Image image={image}/>
+					</span>
 					<h2 style={s.heading}>{heading}</h2>
 					<p style={s.description}>{description}</p>
-					<a style={s.callToAction}>{callToAction}</a>
+					<a style={s.callToAction} href={callToAction.url} target="_blank">{callToAction.text}</a>
 				</div>
 			</div>
 

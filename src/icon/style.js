@@ -1,3 +1,5 @@
+import {speed} from '../util/style';
+
 function styles({
 	color = 'black',
 	height = '2rem',
@@ -9,6 +11,7 @@ function styles({
 		base: {
 			fill: color,
 			height,
+			transition: `fill ${speed(200)}ms`,
 			width,
 		},
 

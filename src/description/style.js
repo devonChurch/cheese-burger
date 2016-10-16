@@ -1,6 +1,6 @@
 import {keyframes} from 'radium';
 import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
-import {spacing, fontSize, masterColor} from '../util/style';
+import {spacing, speed, fontFamily, fontSize, fontWeight, masterColor} from '../util/style';
 
 function styles({
 	isShowing = false,
@@ -44,7 +44,7 @@ function styles({
 
 			},
 
-			animationParameters = () => 'xxx 200ms ease forwards';
+			animationParameters = () => `xxx ${speed(200)}ms ease forwards`;
 
 		return {animationName, animationParameters};
 
@@ -83,7 +83,7 @@ function styles({
 
 			},
 
-			animationParameters = () => 'xxx 500ms linear forwards';
+			animationParameters = () => `xxx ${speed(300)}ms linear forwards`;
 
 		return {animationName, animationParameters};
 
@@ -96,10 +96,26 @@ function styles({
 		animationName: contentAnimation.animationName(),
 		height: 0,
 		overflow: 'hidden',
+		textAlign: 'center',
 	};
 
 	const content = {
 		padding: spacing(900),
+	};
+
+	const image = {
+		borderRadius: '50%',
+		boxShadow: `0 0 0 ${spacing(200)} white, 0 0 0 ${spacing(300)} ${customColor(100)}`,
+		display: 'inline-block',
+		height: '7rem',
+		marginBottom: spacing(500),
+		overflow: 'hidden',
+		width: '7rem',
+
+		[desktopAndUp]: {
+			height: '10rem',
+			width: '10rem',
+		}
 	};
 
 	const heading = {
@@ -112,12 +128,25 @@ function styles({
 	};
 
 	const callToAction = {
-		color: customColor(300),
+		color: customColor(200),
+		display: 'block',
+		fontFamily: fontFamily(600),
+		fontSize: fontSize(300),
+		fontWeight: fontWeight(700),
+		marginTop: spacing(500),
+		textDecoration: 'none',
+		textTransform: 'uppercase',
+		transition: `color ${speed(200)}ms`,
+
+		// ':hover': {
+		// 	color: customColor(900),
+		// }
 	};
 
 	return {
 		base,
 		content,
+		image,
 		heading,
 		description,
 		callToAction
