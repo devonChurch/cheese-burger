@@ -1,4 +1,4 @@
-import {speed} from '../util/style';
+import {speed} from '../helpers/style';
 
 function styles({
 	color = 'black',

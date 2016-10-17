@@ -1,6 +1,6 @@
 import {keyframes} from 'radium';
-import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../util/breakpoint';
-import {spacing, speed, fontFamily, fontSize, fontWeight, masterColor} from '../util/style';
+import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../helpers/breakpoint';
+import {spacing, speed, fontFamily, fontSize, fontWeight, masterColor} from '../helpers/style';
 
 function styles({
 	isShowing = false,
