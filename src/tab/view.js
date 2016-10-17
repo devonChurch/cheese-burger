@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Radium from 'radium';
+// import Radium from 'radium';
+import radium from 'radium';
 import styles from './style';
 import Icon from '../icon/view';
 
-@Radium
+// @Radium
 class Tab extends Component {
 
 	render() {
@@ -26,5 +27,8 @@ class Tab extends Component {
 }
 
 const mapStateToProps = (state) => state;
+const raduimDecorator = radium()(Tab);
+const reduxAndraduimDecorator = connect(mapStateToProps)(raduimDecorator);
 
-export default connect(mapStateToProps)(Tab);
+export {Tab, raduimDecorator, reduxAndraduimDecorator};
+export default reduxAndraduimDecorator;
