@@ -1,13 +1,7 @@
 import {IS_MOBILE, SHOW_TAB, HIDE_TAB} from './actions';
-import * as defaultState from './state';
+import * as defaultState from './default';
 
 const reducer = (state = defaultState, action) => {
-
-	// deepFreeze(state);
-	//
-	// _debug('Questions:', 'action', action);
-
-    // console.log('REDUCER', action.type, action.data);
 
 	switch (action.type) {
 

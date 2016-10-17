@@ -1,4 +1,4 @@
-import * as breakpoint from './util/breakpoint';
+import * as breakpoint from './breakpoint';
 
 const throttle = (() => {
 

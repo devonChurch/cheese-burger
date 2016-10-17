@@ -3,9 +3,9 @@ import {render} from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {StyleRoot} from 'radium';
-import reducer from './reducer';
-import state from './state';
-import props from './props';
+import reducer from './state/reducer';
+import defaultState from './state/default';
+import defaultProps from './props/default';
 import Scaffold from './scaffold/view';
 const cheeseBurger = document.getElementById('cheese-burger');
 
@@ -14,7 +14,7 @@ function renderMe(store) {
 	render(
 		<Provider store={store}>
 			<StyleRoot>
-				<Scaffold content={props}/>
+				<Scaffold content={defaultProps}/>
 			</StyleRoot>
 		</Provider>,
 		cheeseBurger
@@ -30,7 +30,7 @@ function devTools() {
 
 const store = createStore(
 	reducer,
-	state,
+	defaultState,
 	devTools()
 );
 
