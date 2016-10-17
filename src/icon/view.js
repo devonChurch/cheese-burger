@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
+import radium from 'radium';
 import style from './style';
 import * as svg from './svg';
 
-@Radium
 class Icon extends Component {
 
 	render() {
@@ -27,4 +26,7 @@ class Icon extends Component {
 
 }
 
-export default Icon;
+const withRaduimDecorator = radium()(Icon);
+
+export {Icon, withRaduimDecorator};
+export default withRaduimDecorator;

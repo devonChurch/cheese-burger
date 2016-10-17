@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
+import radium from 'radium';
 import style from './style';
 
-@Radium
 class Image extends Component {
 
 	render() {
@@ -22,4 +21,7 @@ class Image extends Component {
 
 }
 
-export default Image;
+const withRaduimDecorator = radium()(Image);
+
+export {Image, withRaduimDecorator};
+export default withRaduimDecorator;

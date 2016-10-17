@@ -74,5 +74,7 @@ class Scaffold extends Component {
 }
 
 const mapStateToProps = (state) => state;
+const withReduxDecorator = connect(mapStateToProps)(Scaffold);
 
-export default connect(mapStateToProps)(Scaffold);
+export {Scaffold, withReduxDecorator};
+export default withReduxDecorator;

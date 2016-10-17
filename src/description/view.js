@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import Radium from 'radium';
+import radium from 'radium';
 import style from './style';
 import Image from '../image/view';
 
-@Radium
 class Description extends Component {
 
 	calculateContentHeight() {
@@ -41,6 +39,7 @@ class Description extends Component {
 
 }
 
-const mapStateToProps = (state) => state;
+const withRaduimDecorator = radium()(Description);
 
-export default connect(mapStateToProps)(Description);
+export {Description, withRaduimDecorator};
+export default withRaduimDecorator;
