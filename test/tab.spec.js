@@ -2,8 +2,6 @@
 /* eslint no-unused-expressions: 0 */
 
 import React from 'react';
-import {connect, Provider} from 'react-redux';
-import Radium, {StyleRoot} from 'radium';
 import {mount, shallow} from 'enzyme';
 import {expect} from 'chai';
 import {Tab} from '../src/tab/view';
@@ -13,14 +11,14 @@ describe('<Tab/>', () => {
     let showTabCallbackComplete;
 
     const props = {
-        icon: 'bubble',
-        text: 'Lorem ipsum dolor',
         color: 'red',
+        icon: 'bubble',
+        text: 'Heading',
         settings: {},
         showTabCallback: () => showTabCallbackComplete = true
     };
 
-    const wrapper = shallow(<Tab tab={props} key={0}/>);
+    const wrapper = shallow(<Tab tab={props}/>);
 
     it('should have an SVG icon', () => {
 

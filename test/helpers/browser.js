@@ -4,6 +4,13 @@ const jsdom = require('jsdom').jsdom;
 
 global.document = jsdom('');
 global.window = document.defaultView;
+global.window.matchMedia = () => {
+    return {
+        matches: false,
+        addListener: () => {},
+        removeListener: () => {}
+    };
+};
 
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
