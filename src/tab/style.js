@@ -1,11 +1,10 @@
-import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../helpers/breakpoint';
-import {spacing, speed, fontFamily, fontSize, fontWeight, masterColor} from '../helpers/style';
+import {desktopAndUp, underDesktop} from '../helpers/breakpoint';
+import {spacing, speed, fontSize, fontWeight, masterColor} from '../helpers/style';
 const {gray} = masterColor;
 
 function styles({
 	color = gray(500),
 	isShowing = false,
-	isHiding = false,
 	isUnderActive = false,
 	isFirstTab = false,
 	isLastTab = false

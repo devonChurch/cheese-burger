@@ -1,13 +1,10 @@
 import {keyframes} from 'radium';
-import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../helpers/breakpoint';
+import {desktopAndUp, isMobile} from '../helpers/breakpoint';
 import {spacing, speed, fontFamily, fontSize, fontWeight, masterColor} from '../helpers/style';
 
 function styles({
 	isShowing = false,
 	isHiding = false,
-	isUnderActive = false,
-	isFirstTab = false,
-	isLastTab = false,
 	contentHeight,
 	color = 'black'
 } = {}) {

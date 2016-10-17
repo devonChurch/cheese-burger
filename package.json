@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devonChurch/squid-rings.git"
+    "url": "git+https://github.com/devonChurch/cheese-burger.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devonChurch/squid-rings/issues"
+    "url": "https://github.com/devonChurch/cheese-burger/issues"
   },
-  "homepage": "https://github.com/devonChurch/squid-rings#readme",
+  "homepage": "https://github.com/devonChurch/cheese-burger#readme",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.9.1",

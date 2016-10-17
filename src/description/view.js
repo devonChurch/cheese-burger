@@ -17,7 +17,7 @@ class Description extends Component {
 	render() {
 
 		const {color, image, heading, description, callToAction, settings} = this.props.description;
-		const contentHeight = '100px'; // this.calculateContentHeight();
+		const contentHeight = this.calculateContentHeight();
 		const s = style({...settings, contentHeight, color});
 
 		return (

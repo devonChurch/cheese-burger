@@ -1,5 +1,5 @@
-import {desktopAndUp, underDesktop, isMobile, isDesktop} from '../helpers/breakpoint';
-import {spacing, fontSize, masterColor} from '../helpers/style';
+import {desktopAndUp} from '../helpers/breakpoint';
+import {masterColor} from '../helpers/style';
 const {gray} = masterColor;
 
 function styles() {
