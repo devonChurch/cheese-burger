@@ -2,7 +2,7 @@ const props = [
 	{
 		color: '#2196F3',
 		image: {
-			directory: '/assets',
+			directory: 'assets',
 			name: 'blue-berries',
 			extension: 'jpg',
 			altText: 'Lorem ipsum dolor'
@@ -21,7 +21,7 @@ const props = [
 	{
 		color: '#009688',
 		image: {
-			directory: '/assets',
+			directory: 'assets',
 			name: 'green-flax',
 			extension: 'jpg',
 			altText: 'Sed ut ullamcorper'
@@ -40,7 +40,7 @@ const props = [
 	{
 		color: '#673AB7',
 		image: {
-			directory: '/assets',
+			directory: 'assets',
 			name: 'purple-flowers',
 			extension: 'jpg',
 			altText: 'Nulla rutrum porta'
