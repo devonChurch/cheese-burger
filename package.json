@@ -11,6 +11,8 @@
     "build:development": "DEVELOPMENT=1 webpack",
     "build:production": "PRODUCTION=1 webpack"
   },
+
+  "pre-commit": ["test"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devonChurch/cheese-burger.git"
@@ -51,6 +53,7 @@
     "mocha": "^3.1.0",
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.9.1",
+    "pre-commit": "^1.1.3",
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.3.2",
     "sass-loader": "^4.0.0",
