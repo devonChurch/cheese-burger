@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/devon-church/.nvm/versions/v6.7.0/bin/node',
+1 verbose cli   '/Users/devon-church/.nvm/versions/v6.7.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'test:lint' ]
+2 info using npm@3.10.3
+3 info using node@v6.7.0
+4 verbose run-script [ 'pretest:lint', 'test:lint', 'posttest:lint' ]
+5 info lifecycle cheese-burger@1.0.0~pretest:lint: cheese-burger@1.0.0
+6 silly lifecycle cheese-burger@1.0.0~pretest:lint: no script for pretest:lint, continuing
+7 info lifecycle cheese-burger@1.0.0~test:lint: cheese-burger@1.0.0
+8 verbose lifecycle cheese-burger@1.0.0~test:lint: unsafe-perm in lifecycle true
+9 verbose lifecycle cheese-burger@1.0.0~test:lint: PATH: /Users/devon-church/.nvm/versions/v6.7.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/devon-church/Documents/projects/cheese-burger/node_modules/.bin:/Users/devon-church/.nvm/versions/v6.7.0/bin:/Users/devon-church/.nvm/versions/v6.7.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin
+10 verbose lifecycle cheese-burger@1.0.0~test:lint: CWD: /Users/devon-church/Documents/projects/cheese-burger
+11 silly lifecycle cheese-burger@1.0.0~test:lint: Args: [ '-c', 'eslint ./src --ext .js' ]
+12 silly lifecycle cheese-burger@1.0.0~test:lint: Returned: code: 1  signal: null
+13 info lifecycle cheese-burger@1.0.0~test:lint: Failed to exec test:lint script
+14 verbose stack Error: cheese-burger@1.0.0 test:lint: `eslint ./src --ext .js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/devon-church/.nvm/versions/v6.7.0/lib/node_modules/npm/lib/utils/lifecycle.js:242:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/devon-church/.nvm/versions/v6.7.0/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid cheese-burger@1.0.0
+16 verbose cwd /Users/devon-church/Documents/projects/cheese-burger
+17 error Darwin 15.6.0
+18 error argv "/Users/devon-church/.nvm/versions/v6.7.0/bin/node" "/Users/devon-church/.nvm/versions/v6.7.0/bin/npm" "run" "test:lint"
+19 error node v6.7.0
+20 error npm  v3.10.3
+21 error code ELIFECYCLE
+22 error cheese-burger@1.0.0 test:lint: `eslint ./src --ext .js`
+22 error Exit status 1
+23 error Failed at the cheese-burger@1.0.0 test:lint script 'eslint ./src --ext .js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the cheese-burger package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     eslint ./src --ext .js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs cheese-burger
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls cheese-burger
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
