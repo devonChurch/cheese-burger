@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import radium from 'radium';
 import style from './style';
 import * as svg from './svg';
@@ -7,7 +7,7 @@ class Icon extends Component {
 
 	render() {
 
-		const {type, color, size} = this.props.icon;
+		const {type, color, size} = this.props.icon; // eslint-disable-line react/prop-types
 		const s = style({
 			color,
 			height: size,
@@ -24,6 +24,14 @@ class Icon extends Component {
 
 	}
 
+}
+
+Icon.proptypes = {
+	icon: PropTypes.shape({
+		type: PropTypes.string.isRequired,
+		color: PropTypes.string,
+		size: PropTypes.string
+	})
 }
 
 const withRaduimDecorator = radium()(Icon);

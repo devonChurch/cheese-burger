@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {IS_MOBILE, SHOW_TAB, HIDE_TAB} from '../state/actions';
 import layout from '../helpers/layout';
@@ -26,7 +26,7 @@ class Scaffold extends Component {
 
 	generateSettings(i) {
 
-		const {content, showTab, hideTab} = this.props;
+		const {content, showTab, hideTab = null} = this.props;
 		const isShowing = showTab === i;
 		const isHiding = hideTab === i;
 		const isUnderActive = showTab + 1 === i;
@@ -71,6 +71,13 @@ class Scaffold extends Component {
 
 	}
 
+}
+
+Scaffold.propTypes = {
+	dispatch: PropTypes.func.isRequired,
+	content: PropTypes.array.isRequired,
+	showTab: PropTypes.number.isRequired,
+	hideTab: PropTypes.number
 }
 
 const mapStateToProps = (state) => state;

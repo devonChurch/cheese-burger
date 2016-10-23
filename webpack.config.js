@@ -1,5 +1,3 @@
-/* global */
-
 let config;
 const task = require('./webpack/task');
 const common = require('./webpack/common');

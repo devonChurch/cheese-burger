@@ -8,8 +8,8 @@
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "eslint ./src --ext .js",
     "test:unit": "mocha ./test/helpers/browser.js ./test/*.spec.js --compilers js:babel-register",
-    "build:development": "DEVELOPMENT=1 webpack",
-    "build:production": "PRODUCTION=1 webpack"
+    "build:development": "webpack",
+    "build:production": "webpack"
   },
 
   "pre-commit": ["test"],

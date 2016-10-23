@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import radium from 'radium';
 import style from './style';
 import Image from '../image/view';
@@ -16,7 +16,7 @@ class Description extends Component {
 
 	render() {
 
-		const {color, image, heading, description, callToAction, settings} = this.props.description;
+		const {color, image, heading, description, callToAction, settings} = this.props.description; // eslint-disable-line react/prop-types
 		const contentHeight = this.calculateContentHeight();
 		const s = style({...settings, contentHeight, color});
 
@@ -37,6 +37,17 @@ class Description extends Component {
 
 	}
 
+}
+
+Description.proptypes = {
+	description: PropTypes.shape({
+		color: PropTypes.string,
+		image: PropTypes.object.isRequired,
+		heading: PropTypes.string.isRequired,
+		description: PropTypes.string.isRequired,
+		callToAction: PropTypes.string.isRequired,
+		settings: PropTypes.object.isRequired
+	})
 }
 
 const withRaduimDecorator = radium()(Description);

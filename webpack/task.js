@@ -5,9 +5,11 @@ module.exports = (() => {
 
     console.log('process.env.npm_lifecycle_event', process.env.npm_lifecycle_event);
 
-    switch (process.env.npm_lifecycle_event) {
+    const environment = process.env.npm_lifecycle_event;
 
-        case 'build:development':
+    switch (true) {
+
+        case environment === 'build:development' || environment === 'start':
             return 'dev';
 
         default:

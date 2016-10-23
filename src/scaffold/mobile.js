@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import Radium from 'radium';
 import Tab from '../tab/view';
 import Description from '../description/view';
@@ -46,6 +46,12 @@ class Mobile extends Component {
 
 	}
 
+}
+
+Mobile.propTypes = {
+	showTabCallback: PropTypes.func.isRequired,
+	generateSettings: PropTypes.func.isRequired,
+	content: PropTypes.array.isRequired
 }
 
 export default Mobile;

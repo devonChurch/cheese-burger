@@ -100,12 +100,14 @@ const
 
 	},
 
-	init = (() => {
+	init = () => {
 
 		currentMobileReference = findMobileReference();
 		listeners();
 
-	})();
+	};
+
+init();
 
 export default {
 

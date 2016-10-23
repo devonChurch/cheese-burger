@@ -4,7 +4,7 @@ A Responsive tabbed UI experimentation around adding UI animation into a React e
 
 ## Demo
 
-[Click here](http://codepen.io/DevonChurch/full/yaRdZv/) (only tested in Chrome)
+[Click here](http://codepen.io/DevonChurch/full/WGPGod/) (only tested in Chrome)
 
 ## Installation
 

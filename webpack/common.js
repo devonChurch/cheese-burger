@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('./path')();
 const environment = require('./environment');
@@ -5,11 +6,14 @@ const environment = require('./environment');
 module.exports = () => {
 
     return {
-      // Entry accepts a path or an object of entries.
-      // We'll be using the latter form given it's
-      // convenient with more complex configurations.
+
+        context: path.src,
+
+        // Entry accepts a path or an object of entries.
+        // We'll be using the latter form given it's
+        // convenient with more complex configurations.
         entry: {
-            src: `${path.src}/index.js`
+            src: './index.js'
         },
 
         output: {
@@ -33,23 +37,26 @@ module.exports = () => {
 
                 {
                     test: /\.js$/,
-                    loaders: ['babel'], // ['babel!eslint'],
+                    loaders: ['babel'],
                     include: path.src
                 }
-
-                // {
-                //     test: /\.scss$/,
-                //     loaders: ['style', 'css', 'postcss', 'sass'],
-                //     include: path.src
-                //
-                // }
 
             ]
 
         },
 
+        externals: {
+            'react/addons': true,
+            'react/lib/ExecutionEnvironment': true,
+            'react/lib/ReactContext': true
+        },
+
         plugins: [
-            environment()
+            environment(),
+            new CopyWebpackPlugin([
+                {from: `./index.html`, to: `./index.html`},
+                {from: `./assets`, to: `./assets`}
+            ])
         ],
 
         postcss() {
