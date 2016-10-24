@@ -13,7 +13,7 @@ module.exports = () => {
         // We'll be using the latter form given it's
         // convenient with more complex configurations.
         entry: {
-            src: './index.js'
+            src: ['babel-polyfill', './index.js']
         },
 
         output: {
